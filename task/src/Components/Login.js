@@ -78,17 +78,17 @@ function Login() {
 
         <div className="demo-credentials">
           <h4>Demo Credentials:</h4>
-          <p>Username: kminchelle</p>
-          <p>Password: 0lelplR</p>
+          <p>Username: emilys</p>
+          <p>Password: emilyspass</p>
         </div>
 
         <div className="toggle-form">
-          <p>
+          {/* <p>
             {showRegister ? 'Already have an account?' : "Don't have an account?"}
             <button onClick={toggleRegister} className="toggle-btn">
               {showRegister ? 'Login' : 'Register'}
             </button>
-          </p>
+          </p> */}
         </div>
       </div>
     </div>

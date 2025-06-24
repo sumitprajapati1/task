@@ -57,12 +57,18 @@ export const { loginStart, loginSuccess, loginFailure, logout, clearError } = au
 
 export const loginUser = (credentials) => async (dispatch) => {
   dispatch(loginStart());
-  
+
   try {
+    
+    const body = {
+      ...credentials,
+      expiresInMins: credentials.expiresInMins || 30
+    };
+
     const response = await fetch('https://dummyjson.com/auth/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(credentials)
+      body: JSON.stringify(body)
     });
 
     const data = await response.json();
@@ -70,10 +76,9 @@ export const loginUser = (credentials) => async (dispatch) => {
     if (response.ok) {
       dispatch(loginSuccess({
         user: data,
-        token: data.accessToken
+        token: data.token 
       }));
     } else {
-      console.log(data);
       dispatch(loginFailure(data.message || 'Login failed'));
     }
   } catch (error) {
